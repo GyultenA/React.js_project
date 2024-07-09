@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 export default function Navigation(){
     return (
         <nav className="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-        <Link to="index.html" className="navbar-brand ms-lg-5">
+        <Link to="#" className="navbar-brand ms-lg-5">
             <h1 className="m-0 text-uppercase text-dark"><i className="bi bi-shop fs-1 text-primary me-3"></i>Pet Shop</h1>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -19,7 +19,7 @@ export default function Navigation(){
                 <Link to="/register" className="nav-item nav-link">Register</Link>
                 <Link to="/logout" className="nav-item nav-link">Logout</Link>
              
-                <Link to="contact.html" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i className="bi bi-arrow-right"></i></Link>
+                <Link to="/contacts" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i className="bi bi-arrow-right"></i></Link>
             </div>
         </div>
     </nav>
