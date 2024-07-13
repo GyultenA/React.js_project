@@ -1,26 +1,82 @@
-import styles from './Register.module.css';
+
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+
+import AuthContext from '../../context/authContext';
+import useForm from '../hook/useForm';
+
+import styles from './Register.module.css';
+
+
+const RegisterFormKeys = {
+    Username: 'username',
+    Email: 'email',
+    Password: 'password',
+    ConfirmPass: 'repass',
+}
 
 export default function Register() {
+    const { registerSubmitHandler } = useContext(AuthContext);
+
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+        [RegisterFormKeys.Username]: '',
+        [RegisterFormKeys.Email]: '',
+        [RegisterFormKeys.Password]: '',
+        [RegisterFormKeys.ConfirmPass]: '',
+    })
+
+
+
     return (
-        <main className={styles.register}>
-              
-        <div className={styles.registerbox}>
+
+        <div className={styles.register}>
             <h1>Register</h1>
             <h4>It is free and only takes a minute</h4>
-            <form action="#" method="">
+            <form onSubmit={onSubmit}>
                 <label>Username</label>
-                <input type="text" name="" placeholder="Username.."/>
+                <input type="text"
+                    name="username"
+                    placeholder="Username.."
+                    onChange={onChange}
+                    value={values[RegisterFormKeys.Username]}
+                />
+
                 <label>Email</label>
-                <input type="text" name="" placeholder="Email.."/>
+                <input type="text"
+                    name="email"
+                    placeholder="Email.."
+                    onChange={onChange}
+                    value={values[RegisterFormKeys.Email]}
+                />
+
                 <label>Password</label>
-                <input type="password" name="" placeholder="Password.."/>
+                <input type="password"
+                    name="password"
+                    placeholder="Password.."
+                    onChange={onChange}
+                    value={values[RegisterFormKeys.Password]}
+                />
+
                 <label>Confirm Password</label>
-                <input type="password" name="" placeholder="Confirm Password.."/>
-                <input type="submit" value="Register"/>
+                <input type="password"
+                    name="repass"
+                    placeholder="Confirm Password.."
+                    onChange={onChange}
+                    value={values[RegisterFormKeys.ConfirmPass]}
+                />
+                <input type="submit" value="Register" />
+                <p>Already have an account? <Link to="/login">Login here</Link></p>
             </form>
-            <p>Already have an account? <Link to="#">Login here</Link></p>
+            <div>
+
+            </div>
+
         </div>
-    </main>
- )
+
+
+
+
+
+
+    )
 }

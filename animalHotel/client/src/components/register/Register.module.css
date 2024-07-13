@@ -5,43 +5,75 @@
     background-position: center;
     background-size: cover;
     padding-top: 50px;
+   
   }
+
+  .container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+ /* .registerPage {
+    position: relative;
+    
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #3e4443;
+    box-shadow: 0px 0px 32px 0px #49535e, -14px -14px 20px #191c21;
+}*/
+
+.registerPage {
+    width: 700px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 400px;
+}
 
 .registerbox {
     color: white;
     width: 360px;
-    height: 500px;
+    height: 300px;
     margin: auto;
-    background-color: #096BAB;
-    border: 2px solid #2E87CB;
+  /*  background-color: #096BAB;*/
+  /*  border: 2px solid #2E87CB;*/
     border-radius: 20px;
     margin-top: 2%;
 }
 
-.registerbox h1 {
+.register h1 {
     text-align: center;
     padding-top: 15px;
 }
 
-.registerbox h4 {
+.register h4 {
     margin-top: 10px;
     text-align: center;
 }
 
-.registerbox form {
+.register form {
+    width: 100%;
+    height: 100vh;
     width: 300px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    padding-left: 500px;
     margin-left: 20px;
+    justify-content: center;
 }
 
-.registerbox form label {
+.register form label {
     display: flex;
     margin-top: 20px;
     margin-bottom: 5px;
     font-size: 18px;
+    width: 200px;
 }
 
-.registerbox form input {
-    width: 320px;
+.register form input{
+    width: 420px;
     height: 30px;
     padding-left: 7px;
     border: none;
@@ -51,23 +83,48 @@
     color: black;
 }
 
-.registerbox input[type="submit"] {
-    width: 320px;
+form input[type="password"]{
+    width: 420px;
+    height: 30px;
+    padding-left: 2px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 8px;
+    outline: none;
+    color: black;
+    background: #ecf0f3;
+    padding: 30px;
+    margin-top: 10px;
+    font-size: 14px;
+    box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
+}
+
+.register input[type="submit"] {
+    width: 420px;
     height: 35px;
     margin-top: 30px;
     border: none;
-    background-color: #050912;
+  /*  background-color: #050912;*/
     color: white;
-    font-size: 15px;
+    font-size: 20px;
 }
 
-.registerbox p {
+.register p {
+    text-align: center;
+    position: absolute;
+    padding-top: 20px;
+    padding-left: 50px;
+    font-size: 15px;
+
+}
+.register p>Link {
     text-align: center;
     padding-top: 20px;
     font-size: 15px;
 
 }
 
-.registerbox p>a {
+
+.registerbox p {
     color: #050912;
 }

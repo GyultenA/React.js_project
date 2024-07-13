@@ -1,16 +1,28 @@
-import styles from './CreatePost.module.css'
+import styles from './CreatePost.module.css';
+import { createPost } from '../../services/reviewsService';
 
 export default function CreatePost(){
+ const createPostSumbitHandler = async (e)=> {
+    e.preventDefault();
+
+    const postData = Object.fromEntries(new FormData(e.currentTarget));
+       //console.log(postData)
+     const result = await  createPost(postData);
+     console.log(result)
+
+
+ }
+
     return(
         <section  className={styles.createpage}>
-        <form id="create" >
+        <form id="create" onSubmit={createPostSumbitHandler}>
             <div className={styles.container}>
                 <h1>Create Post</h1>
                 <label htmlFor="title">Title:</label>
                 <input type="text" id="title" name="title" placeholder="Enter title..." />
 
-                <label htmlFor="name">Username:</label>
-                <input type="text" id="name" name="name" placeholder="Enter username..." />
+                <label htmlFor="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username..." />
 
                 <label htmlFor="imageUrl">Image:</label>
                 <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />

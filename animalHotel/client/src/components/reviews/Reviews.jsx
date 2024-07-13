@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import styles from "./Reviews.module.css"
 
 export default function Reviews(){
@@ -281,8 +281,9 @@ export default function Reviews(){
       </div>
       {/* Search Form End */}
     
-     <Link to="/reviews/create" className={styles.button}>Create post
+     <Link to="create" className={styles.button}>Create post
      </Link>
+     <Outlet />
    
      
     </div>
