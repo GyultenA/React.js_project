@@ -20,9 +20,9 @@ const buildOptions = (data) => {
     return options;
 };
 
-const request = async (method, url, data) => {
+const request = async (method, url, data, accessToken) => {
     const response = await fetch(url, {
-        ...buildOptions(data),
+        ...buildOptions(data, accessToken),
         method,
     });
 

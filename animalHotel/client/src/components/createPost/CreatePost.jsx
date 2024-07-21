@@ -1,5 +1,5 @@
 import styles from './CreatePost.module.css';
-import { createPost } from '../../services/reviewsService';
+import { createPost } from '../../api/reviewsService';
 
 export default function CreatePost(){
  const createPostSumbitHandler = async (e)=> {

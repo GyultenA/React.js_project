@@ -3,14 +3,15 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 import AuthContext from './context/authContext';
-import * as authService from './services/authService';
+import * as authService from './api/authService';
 import Path from './utils/paths'
 
 import TopBar from "./components/topBar/TopBar";
 import Header from "./components/header/Header";
 import Navigation from "./components/navigation/Navigation";
 import Login from "./components/login/Login";
-import Register from "./components/register/Register"
+import Register from "./components/register/Register";
+import Logout from "./components/logout/Logout";
 
 import Team from "./components/teams/Team";
 import Footer from "./components/footer/Footer"
@@ -21,7 +22,10 @@ import CreatePost from './components/createPost/CreatePost';
 function App() {
   const navigate = useNavigate()
 
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState(() => {
+    localStorage.removeItem('accessToken');
+    return {};
+  });
 
   const loginSubmitHandler = async(values) => {
     console.log(values)
@@ -29,27 +33,35 @@ function App() {
 
     console.log(result);
     setAuth(result);
+    localStorage.setItem('accessToken', result.accessToken);
 
     navigate(Path.Home)
   };
 
   const registerSubmitHandler = async(values) => {
-    console.log(values);
+    //console.log(values);
    
-    const result = await authService.register(values.username, values.email, values.password);
+    const result = await authService.registerNew(values.username, values.email, values.password);
 
     setAuth(result);
-
+    localStorage.setItem('accessToken', result.accessToken);
     navigate(Path.Home)
+};
+
+const logoutHandler =()=> {
+  setAuth({});
+  localStorage.removeItem('accessToken');
 }
 
   const values = {
     loginSubmitHandler,
     registerSubmitHandler,
+    logoutHandler,
     username: auth.username,
     email: auth.email,
-    isAuthenticated: !!auth.email,
+    isAuthenticated: !!auth.accessToken,
   }
+ // console.log(values)
 
   return (
 
@@ -68,6 +80,7 @@ function App() {
           <Route path='/reviews/create' element={<CreatePost />} />
 
           <Route path='/register' element={<Register />} />
+          <Route path='/logout' element={<Logout />} />
 
         </Routes>
 

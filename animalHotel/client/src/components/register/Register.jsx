@@ -46,7 +46,7 @@ export default function Register() {
                     name="email"
                     placeholder="Email.."
                     onChange={onChange}
-                    value={values[RegisterFormKeys.Email]}
+                    values={values[RegisterFormKeys.Email]}
                 />
 
                 <label>Password</label>
