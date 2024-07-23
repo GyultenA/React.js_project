@@ -17,6 +17,12 @@ export const createPost = async (postData) => {
     return result
 }
 
+export const createPosttwo  = async (reviewData) => {
+  const result = await request.post(baseUrl, reviewData);
+
+  return result;
+};
+
 export const getAll = async () => {
  const result = await request.get(baseUrl);
  //const reviews = Object.values(result)

@@ -1,28 +1,34 @@
 /* eslint-disable no-unused-vars */
-import styles from './CreatePost.module.css';
-import { createPost } from '../../api/reviewsService';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+
 import AuthContext from '../../context/authContext';
+
+import styles from './CreatePost.module.css';
+import { createPost, createPosttwo } from '../../api/reviewsService';
+
 
 export default function CreatePost(){
     const navigate = useNavigate();
-    const {username} = useContext(AuthContext)
+   // const {username} = useContext(AuthContext)
 
 
  const createPostSumbitHandler = async (e)=> {
     e.preventDefault();
+    const createData = new FormData(e.currentTarget);
+    console.log(createData)
 
-    const postData = Object.fromEntries(new FormData(e.currentTarget));
+    const postData = Object.fromEntries(createData);
        //console.log(postData)
 
        try {
-        const result = await  createPost(postData);
-        console.log(result)
+         await  createPosttwo(postData);
+        //console.log(result)
         navigate('/reviews')
         
        } catch (err) {
-           console.log(err)
+           console.log(err);
+           throw new Error('Create a review is not successful ')
        }
     
 
