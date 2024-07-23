@@ -10,9 +10,9 @@ export const login = async (email, password) => {
     password
   });
 
-  localStorage.setItem('email', result.email);
-  localStorage.setItem('accessToken', result.accessToken);
-  localStorage.setItem('_id', result._id)
+ // localStorage.setItem('email', result.email);
+  //localStorage.setItem('accessToken', result.accessToken);
+ // localStorage.setItem('_id', result._id)
 
   return result;
 };
@@ -46,4 +46,6 @@ if (!response.ok) {
 
 return response.json();
 }
+
+export const logout = () => request.get(`${baseUrl}/logout`);
 

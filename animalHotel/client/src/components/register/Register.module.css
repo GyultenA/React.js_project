@@ -5,6 +5,9 @@
     background-position: center;
     background-size: cover;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
    
    
   }
@@ -47,22 +50,24 @@
 .register h1 {
     text-align: center;
     padding-top: 15px;
+    padding-left: 120px;
 }
 
 .register h4 {
     margin-top: 10px;
     text-align: center;
+    padding-left: 120px;
 }
 
 .register form {
-    width: 100%;
+   /* width: 100%;*/
     height: 100vh;
-    width: 300px;
+   /* width: 300px;*/
     padding-top: 3px;
     padding-bottom: 10px;
-    padding-left: 800px;
+    /*padding-left: 800px;*/
     margin-left: 20px;
-    justify-content: center;
+  /*  justify-content: center;*/
 }
 
 .register form label {
@@ -84,7 +89,7 @@
     color: black;
 }
 
-form input[type="password"]{
+.register form input[type="password"]{
     width: 420px;
     height: 30px;
     padding-left: 2px;

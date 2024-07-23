@@ -42,7 +42,7 @@
     }
 
     class AuthorizationError extends ServiceError {
-        constructor(message = 'Unauthorized') {
+        constructor(message = 'orized') {
             super(message);
             this.name = 'AuthorizationError'; 
             this.status = 401;
@@ -1349,7 +1349,7 @@
     			title: "Great place!",
                 imageUrl: "https://thumbs.dreamstime.com/b/golden-retriever-dog-21668976.jpg",
     			description: "I am very pleased with the care they took for my dog.",
-    			_createdOn: 1614260681375,
+    			_createdOn: 1684260681375,
     			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
     		},
             "0a272c58-b7ea-4e09-a000-7ec988248f67": {
@@ -1409,18 +1409,7 @@
     		".update": false,
     		".delete": false
     	},
-    	members: {
-    		".update": "isOwner(user, get('teams', data.teamId))",
-    		".delete": "isOwner(user, get('teams', data.teamId)) || isOwner(user, data)",
-    		"*": {
-    			teamId: {
-    				".update": "newData.teamId = data.teamId"
-    			},
-    			status: {
-    				".create": "newData.status = 'pending'"
-    			}
-    		}
-    	}
+    
     };
     var settings = {
     	identity: identity,

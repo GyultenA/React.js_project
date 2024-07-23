@@ -3,7 +3,7 @@
 export default function Header() {
     return (
         <>
-            <div className="container-fluid bg-primary py-5 mb-5 hero-header">
+       <div className="container-fluid bg-primary py-5 mb-5 hero-header">
                 <div className="container py-5">
                     <div className="row justify-content-start">
                         <div className="col-lg-8 text-center text-lg-start">
@@ -21,7 +21,7 @@ export default function Header() {
             <div className="row gx-5">
                 <div className="col-lg-5 mb-5 mb-lg-0" style={{minHeight: "500px"}}>
                     <div className="position-relative h-100">
-                        <img className="position-absolute w-100 h-100 rounded" src="img/about.jpg" style={{objectfit: "cover"}}/>
+                        <img className="position-absolute w-100 h-100 rounded" src="img/about.jpeg" style={{objectfit: "cover"}}/>
                     </div>
                 </div>
                 <div className="col-lg-7">

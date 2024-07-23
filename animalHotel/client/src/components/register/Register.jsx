@@ -29,7 +29,8 @@ export default function Register() {
 
     return (
 
-        <div className={styles.register}>
+        <div >
+              <div className={styles.register}>
             <h1>Register</h1>
             <h4>It is free and only takes a minute</h4>
             <form onSubmit={onSubmit}>
@@ -72,6 +73,9 @@ export default function Register() {
             </div>
 
         </div>
+
+        </div>
+      
 
 
 

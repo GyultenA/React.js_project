@@ -17,6 +17,9 @@ import Team from "./components/teams/Team";
 import Footer from "./components/footer/Footer"
 import Reviews from './components/reviews/Reviews';
 import CreatePost from './components/createPost/CreatePost';
+import ReviewDetails from './components/reviewDetail/ReviewDetails';
+import NotFound from './components/notFound/NotFound';
+import EditPost from './components/editPost/EditPost';
 
 
 function App() {
@@ -57,6 +60,7 @@ const logoutHandler =()=> {
     loginSubmitHandler,
     registerSubmitHandler,
     logoutHandler,
+    userId: auth._id,
     username: auth.username,
     email: auth.email,
     isAuthenticated: !!auth.accessToken,
@@ -75,12 +79,16 @@ const logoutHandler =()=> {
           <Route path="/services" element={<Team />} />
           <Route path="/login" element={<Login />} />
           <Route path='/reviews' element={<Reviews />} />
+          <Route path='/reviews/:reviewId' element={<ReviewDetails />} />
 
 
           <Route path='/reviews/create' element={<CreatePost />} />
+          <Route path='/reviews/:reviewId/edit' element= {<EditPost />} />
 
           <Route path='/register' element={<Register />} />
           <Route path='/logout' element={<Logout />} />
+
+          <Route path='/*' element={<NotFound />} />
 
         </Routes>
 

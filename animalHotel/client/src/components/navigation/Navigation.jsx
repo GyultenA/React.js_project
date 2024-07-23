@@ -25,7 +25,8 @@ export default function Navigation() {
                     {isAuthenticated && (
                         <>
                             <Link to="/profile" className="nav-item nav-link">{username} profile</Link>
-                            <Link to="/logout" className="nav-item nav-link">Logout</Link>
+                          
+                            <Link to="/logout" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Logout <i className="bi bi-arrow-right"></i></Link>
                         </>
 
                     )}
@@ -40,7 +41,7 @@ export default function Navigation() {
 
 
 
-                    <Link to="/contacts" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i className="bi bi-arrow-right"></i></Link>
+                    
                 </div>
             </div>
         </nav>

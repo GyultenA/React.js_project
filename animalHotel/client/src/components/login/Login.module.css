@@ -1,10 +1,10 @@
 .login {
     width: 100%;
     height: 100vh;
-    background-image: url(../images/background-2.jpg);
+    /*background-image: url(../images/background-2.jpg);*/
     background-position: center;
     background-size: cover;
-    padding-top: 50px;
+    padding-top: 20px;
   }
   
   .loginbox {
@@ -41,7 +41,7 @@
   }
   
   form input {
-    width: 340px;
+    width: 300px;
     height: 30px;
     padding-left: 7px;
     border: none;
@@ -51,23 +51,61 @@
     color: black;
   
   }
-  
-  input[type="submit"] {
+
+  .loginbox form input[type="email"]{
     width: 340px;
-    height: 35px;
-    margin-top: 20px;
+    height: 30px;
+    padding-left: 2px;
     border: none;
-    background-color: #3b3d42;
+    border: 1px solid gray;
+    border-radius: 8px;
+    outline: none;
+    color: black;
+    background: #ecf0f3;
+    padding: 30px;
+    margin-top: 10px;
+    font-size: 14px;
+    box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
+}
+
+ .loginbox form input[type="password"]{
+    width: 340px;
+    height: 30px;
+    padding-left: 2px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 8px;
+    outline: none;
+    color: black;
+    background: #ecf0f3;
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
+}
+  
+.loginbox form input[type="submit"] {
+    width: 340px;
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 10px;
+    border: none;
+    background-color: #75e047;
     color: white;
-    font-size: 15px;
+    font-size: 18px;
+    border: 2px solid #75e047;
   }
   
   .loginbox p {
     text-align: center;
+    position: absolute;
     padding-top: 20px;
+    padding-left: 50px;
     font-size: 15px;
+    color: black;
   }
   
-  .loginbox p > a {
+  .loginbox p > Link {
     color: #04060b;
   }

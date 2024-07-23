@@ -1,0 +1,40 @@
+.details {
+ 
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.details p:last-of-type  {
+    font-size: 30px;
+}
+
+.buttons {
+    height: 15%;
+   
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+ 
+    padding-bottom: 40px;
+}
+
+.button {
+    height: 15%;
+    background-color: #3ca838;
+    padding: 14px;
+    margin-top: auto;
+    border-radius: 6%;
+    border-color: #3ca838;
+    width: 200px;
+    font-size: 21px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.button:hover {
+    background-color: #6f5d9c;
+    color: white;
+}
