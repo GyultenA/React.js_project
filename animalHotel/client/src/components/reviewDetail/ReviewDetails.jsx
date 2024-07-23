@@ -66,7 +66,7 @@ export default function ReviewDetails() {
             {isOwner && (
                 <>
                  <div className={styles.buttons}>
-                    <Link to={`/review/${reviewId}/edit`} className={styles.button}>Edit</Link>
+                    <Link to={`/reviews/${reviewId}/edit`} className={styles.button}>Edit</Link>
                     <button className={styles.button} onClick={deleteClickHandler}>Delete</button>
                 </div>
                 </>

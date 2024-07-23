@@ -43,6 +43,12 @@ export const getOne = async (reviewId) => {
 
 export const remove = async (reviewId) => request.remove(`${baseUrl}/${reviewId}`);
 
+export const editPost = async (gameId, gameData) => {
+  const result = await request.put(`${baseUrl}/${gameId}`, gameData);
+
+  return result;
+};
+
 
 export const getUser = async(ownerId) => {
   const response = await fetch('http://localhost:3030/users')
