@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { Routes, Route} from 'react-router-dom';
 
-import AuthContext from './context/authContext';
-import * as authService from './api/authService';
-import Path from './utils/paths'
+
+import {AuthContextProvider} from './context/authContext';
+
 
 import TopBar from "./components/topBar/TopBar";
 import Header from "./components/header/Header";
@@ -25,63 +24,11 @@ import Profile from './components/profile/Profile';
 
 
 function App() {
-  const navigate = useNavigate()
 
-  const [auth, setAuth] = useState(() => {
-    localStorage.removeItem('accessToken');
-    return {};
-  });
-
-  const loginSubmitHandler = async (values) => {
-   // console.log(values)
-    const result = await authService.login(values.email, values.password);
-
-    console.log(result);
-    setAuth(result);
-    localStorage.setItem('accessToken', result.accessToken);
-
-    navigate(Path.Home)
-  };
-
-  const registerSubmitHandler = async (values) => {
-   // console.log(values);
-
-    if (values.password !== values.repass) {
-      throw new Error('Passwords do not match')
-    }
-
-    try {
-      const result = await authService.registerNew(values.username, values.email, values.password);
-
-      setAuth(result);
-      localStorage.setItem('accessToken', result.accessToken);
-      navigate(Path.Home)
-    } catch (err) {
-      console.log(err.message)
-    }
-
-
-  };
-
-  const logoutHandler = () => {
-    setAuth({});
-    localStorage.removeItem('accessToken');
-  }
-
-  const values = {
-    loginSubmitHandler,
-    registerSubmitHandler,
-    logoutHandler,
-    userId: auth._id,
-    username: auth.username,
-    email: auth.email,
-    isAuthenticated: !!auth.accessToken,
-  }
-  // console.log(values)
 
   return (
 
-    <AuthContext.Provider value={values}>
+    <AuthContextProvider>
       <div>
         <TopBar />
         <Navigation />
@@ -109,7 +56,7 @@ function App() {
 
       </div>
 
-    </AuthContext.Provider >
+    </AuthContextProvider >
 
   )
 }

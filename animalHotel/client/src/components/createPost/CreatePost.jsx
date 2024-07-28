@@ -9,7 +9,7 @@ import { createPost, createPosttwo } from '../../api/reviewsService';
 
 
 export default function CreatePost(){
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState({})
     const navigate = useNavigate();
    const {username} = useContext(AuthContext)
 
@@ -17,14 +17,18 @@ export default function CreatePost(){
  const createPostSumbitHandler = async (e)=> {
     e.preventDefault();
     const createData = new FormData(e.currentTarget);
-    console.log(createData)
+   
 
     const postData = Object.fromEntries(createData);
-       //console.log(postData)
+   console.log (postData)
+   postData.username = username
 
        try {
-         await  createPosttwo(postData);
-        //console.log(result)
+
+        const result =  await  createPosttwo(postData);
+        result.username = username
+        console.log(result)
+        setReviews((state) => ({...state, result}))
         navigate('/reviews')
         
        } catch (err) {
@@ -44,8 +48,8 @@ export default function CreatePost(){
                 <label htmlFor="title">Title:</label>
                 <input type="text" id="title" name="title" placeholder="Enter title..." />
 
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter username..." />
+               {/**<label htmlFor="username">Username:</label>
+                <input type="text" id="username" name="username"  /> */} 
 
                 <label htmlFor="imageUrl">Image:</label>
                 <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />

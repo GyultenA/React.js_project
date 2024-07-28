@@ -1,7 +1,14 @@
 .error {
-    width: 100%;
-    height: 900px;
-  /*  background: url('/public/images/404.jpg') ;*/
-    background-size:cover;
+  margin: 50px auto;
+    max-width: 100%;
+    width: 1200px;
+    height: 800px;
+ /* background: url('/client/public/img/about2.jpg') ;*/
+  background: url('https://img.freepik.com/premium-photo/row-tops-heads-cats-dogs-with-paws-up-peeking-blank-white-sign-sized_629685-5059.jpg');
+   background-size:cover;
     text-align: center;
+}
+
+.error h3 {
+  padding-top: 30px;
 }

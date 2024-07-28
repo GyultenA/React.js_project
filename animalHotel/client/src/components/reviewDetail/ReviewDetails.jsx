@@ -58,6 +58,7 @@ export default function ReviewDetails() {
         <article className={styles.details}>
             <h3>Title: {review?.title || 'No title available'}</h3>
             <p>Created at: {review?._createdOn ? new Date(review._createdOn).toLocaleDateString() : 'No date available'}</p>
+            <p>Post by: {review.username}</p>
             <div>
                 <img src={review?.imageUrl || ''} alt={review?.title || 'Image'} />
             </div>

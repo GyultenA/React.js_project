@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams, } from 'react-router-dom';
 
 import styles from './EditPost.module.css';
+import AuthContext from '../../context/authContext';
 import { getOne, editPost } from '../../api/reviewsService';
 
 
@@ -9,9 +10,10 @@ import { getOne, editPost } from '../../api/reviewsService';
 export default function EditPost() {
     const navigate = useNavigate();
     const { reviewId } = useParams();
+    const {username} = useContext(AuthContext)
     const [review, setReview] = useState({
         title: '',
-        username: '',
+       
         imageUrl: '',
         description: '',
     });
@@ -30,7 +32,7 @@ export default function EditPost() {
         console.log(formData)
 
         const values = Object.fromEntries(formData)
-
+        values.username = username
 
         try {
             await editPost(reviewId, values);
@@ -59,11 +61,11 @@ export default function EditPost() {
                     onChange={onChange} 
                     placeholder="Enter title..." />
 
-                    <label htmlFor="username">Username:</label>
+                  {/**<label htmlFor="username">Username:</label>
                     <input type="text" id="username" name="username"
                     value={review.username}
                     onChange={onChange}
-                    placeholder="Enter username..." />
+                    placeholder="Enter username..." /> */}  
 
                     <label htmlFor="imageUrl">Image:</label>
                     <input type="text" id="imageUrl" name="imageUrl" 

@@ -1418,7 +1418,7 @@
                 name: "Andrea Savas",
                 occupation: "Cat trainer",
                 imageUrl: "https://www.hepper.com/wp-content/uploads/2021/09/animal-shelter-for-cats_hedgehog94-Shutterstock.jpg",
-                description: "If you’re going on a trip without your cat, you generally have three options: board them at a facility, leave them home alone, or have someone check up on them occasionally. Each of these options has its own pros and cons. Sometimes, one option may be completely impossible depending on the owner and cat. (For instance, cats with medication cannot be left at home alone.We are care for your cat.",
+                description: "If you’re going on a trip without your cat, you generally have three options: board them at a facility, leave them home alone, or have someone check up on them occasionally. Each of these options has its own pros and cons. Sometimes, one option may be completely impossible depending on the owner and cat. For instance, cats with medication cannot be left at home alone.We are care for your cat.",
                 _id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
             }
         },
