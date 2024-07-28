@@ -28,42 +28,7 @@ export default function Reviews() {
         </h3>
         {/* Blog list Start */}
         <div className="col-lg-8">
-          <div className="blog-item mb-5">
-            <div className="row g-0 bg-light overflow-hidden">
-              <div className="col-12 col-sm-5 h-100">
-                <img
-                  className="img-fluid h-100"
-                  src="img/blog-1.jpg"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div className="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
-                <div className="p-4">
-                  <div className="d-flex mb-3">
-                    <small className="me-3">
-                      <i className="bi bi-bookmarks me-2" />
-                      Web Design
-                    </small>
-                    <small>
-                      <i className="bi bi-calendar-date me-2" />
-                      01 Jan, 2045
-                    </small>
-                  </div>
-                  <h5 className="text-uppercase mb-3">
-                    Dolor sit magna rebum clita rebum dolor
-                  </h5>
-                  <p>
-                    Ipsum sed lorem amet dolor amet duo ipsum amet et dolore est
-                    stet tempor eos dolor
-                  </p>
-                  <a className="text-primary text-uppercase" href="">
-                    Read More
-                    <i className="bi bi-chevron-right" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           {reviews.map(review => <ReviewItem key={review._id} {...review}/>)}
          
           <div className="col-12">

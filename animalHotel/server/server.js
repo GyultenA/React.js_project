@@ -1,10 +1,11 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('http'), require('fs'), require('crypto')) :
-    typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
-}(this, (function (http, fs, crypto) { 'use strict';
+        typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
+            (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
+}(this, (function (http, fs, crypto) {
+    'use strict';
 
-    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+    function _interopDefaultLegacy(e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
     var http__default = /*#__PURE__*/_interopDefaultLegacy(http);
     var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
@@ -13,14 +14,14 @@
     class ServiceError extends Error {
         constructor(message = 'Service Error') {
             super(message);
-            this.name = 'ServiceError'; 
+            this.name = 'ServiceError';
         }
     }
 
     class NotFoundError extends ServiceError {
         constructor(message = 'Resource not found') {
             super(message);
-            this.name = 'NotFoundError'; 
+            this.name = 'NotFoundError';
             this.status = 404;
         }
     }
@@ -28,7 +29,7 @@
     class RequestError extends ServiceError {
         constructor(message = 'Request error') {
             super(message);
-            this.name = 'RequestError'; 
+            this.name = 'RequestError';
             this.status = 400;
         }
     }
@@ -36,7 +37,7 @@
     class ConflictError extends ServiceError {
         constructor(message = 'Resource conflict') {
             super(message);
-            this.name = 'ConflictError'; 
+            this.name = 'ConflictError';
             this.status = 409;
         }
     }
@@ -44,7 +45,7 @@
     class AuthorizationError extends ServiceError {
         constructor(message = 'orized') {
             super(message);
-            this.name = 'AuthorizationError'; 
+            this.name = 'AuthorizationError';
             this.status = 401;
         }
     }
@@ -52,7 +53,7 @@
     class CredentialError extends ServiceError {
         constructor(message = 'Forbidden') {
             super(message);
-            this.name = 'CredentialError'; 
+            this.name = 'CredentialError';
             this.status = 403;
         }
     }
@@ -556,8 +557,8 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
-    		if (query.distinct) {
+
+            if (query.distinct) {
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
                     const key = props.map(p => c[p]).join('::');
@@ -793,7 +794,7 @@
     }
 
     function onRequest(context, tokens, query, body) {
-        Object.entries(body).forEach(([k,v]) => {
+        Object.entries(body).forEach(([k, v]) => {
             console.log(`${k} ${v ? 'enabled' : 'disabled'}`);
             context.util[k] = v;
         });
@@ -931,7 +932,7 @@
          * @param {Object} data Value to store. Shallow merge will be performed!
          * @return {Object} Updated entry.
          */
-         function merge(collection, id, data) {
+        function merge(collection, id, data) {
             if (!collections.has(collection)) {
                 throw new ReferenceError('Collection does not exist: ' + collection);
             }
@@ -1318,118 +1319,126 @@
 
     var identity = "email";
     var protectedData = {
-    	users: {
-    		"35c62d76-8152-4626-8712-eeb96381bea8": {
-    			email: "peter@abv.bg",
-    			username: "Peter Petrov",
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-                
-    		},
-    		"847ec027-f659-4086-8032-5173e2f9c93a": {
-    			email: "george@abv.bg",
-    			username: "George Georgiev",
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-               
-    		},
-    		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-    			email: "maria@abv.bg",
-    			username: "Maria Petkova",
-    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
-               
-    		}
-    	},
-    	sessions: {
-    	}
+        users: {
+            "35c62d76-8152-4626-8712-eeb96381bea8": {
+                email: "peter@abv.bg",
+                username: "Peter Petrov",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+
+            },
+            "847ec027-f659-4086-8032-5173e2f9c93a": {
+                email: "george@abv.bg",
+                username: "George Georgiev",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+
+            },
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+                email: "maria@abv.bg",
+                username: "Maria Petkova",
+                hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+
+            }
+        },
+        sessions: {
+        }
     };
     var seedData = {
-    
-    	reviews: {
-    		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			title: "Great place!",
-                username:"Peter Petrov",
+
+        reviews: {
+            "0a272c58-b7ea-4e09-a000-7ec988248f66": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Great place!",
+                username: "Peter Petrov",
                 imageUrl: "https://thumbs.dreamstime.com/b/golden-retriever-dog-21668976.jpg",
-    			description: "I am very pleased with the care they took for my dog.",
-    			_createdOn: 1684260681375,
-    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
-    		},
+                description: "I am very pleased with the care they took for my dog.",
+                _createdOn: 1684260681375,
+                _id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+            },
             "0a272c58-b7ea-4e09-a000-7ec988248f67": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Thank you to the team!",
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Thank you to the team!",
                 username: "George Georgiev",
-                imageUrl:"https://cdn.shopify.com/s/files/1/1227/0278/files/Black-and-white-cat_large.jpg?v=1556222385",
-    			description: "we left the cat for a week, no problems, very careful care was taken of her",
-    			_createdOn: 1614260681375,
-    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f67"
-    		},
+                imageUrl: "https://cdn.shopify.com/s/files/1/1227/0278/files/Black-and-white-cat_large.jpg?v=1556222385",
+                description: "we left the cat for a week, no problems, very careful care was taken of her",
+                _createdOn: 1721848458566,
+                _id: "0a272c58-b7ea-4e09-a000-7ec988248f67"
+            },
             "0a272c58-b7ea-4e09-a000-7ec988248f68": {
-    			_ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-    			title: "I highly recommend",
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                title: "I highly recommend",
                 username: "Maria Petkova",
                 imageUrl: "https://cdn.mos.cms.futurecdn.net/ASHH5bDmsp6wnK6mEfZdcU.jpg",
-    			description: "Great team, great place, thanks for taking care of my best friend",
-    			_createdOn: 1614260681375,
-    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f68"
-    		},
+                description: "Great team, great place, thanks for taking care of my best friend",
+                _createdOn: 1704260681375,
+                _id: "0a272c58-b7ea-4e09-a000-7ec988248f68"
+            },
+            "0f0cf27d-af21-4409-9238-37f40701222d": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                title: "I highly recommend",
+                username: "Maria Petkova",
+                imageUrl: "https://t4.ftcdn.net/jpg/01/57/79/45/360_F_157794550_9HR4WdwqADVwp0TUoLS7wRd3yPjixtSx.jpg",
+                _createdOn: 1722163076632,
+                _id: "0f0cf27d-af21-4409-9238-37f40701222d"
+            }
 
-    	},
-    
-    	likes: {
-    	},
-    	
-    	
-    	teams: {
-    		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Milena Todorova",
-                occupation:"Trainer",
-    			imageUrl: "https://dogtrainingelite.com/oak/files/trainers/ne-ohio/andrea-johnson-ne-ohio.jpg",
-    			description: "Dog trainers use their knowledge of animal behavior to help people learn how to train their dogs. People most often bring their dogs to trainers because they want to teach them basic obedience skills or correct behavioral problems, but some specialized trainers prepare dogs for roles as police dogs, guide dogs, or therapy dogs.",
-    			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
-    		},
-    		"dc888b1a-400f-47f3-9619-07607966feb8": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Melisa Muniu",
-                occupation:"Groomer",
-    			imageUrl: "https://www.petcareins.com/wp-content/uploads/2022/02/9b3da0af2784c0210f7f58a80fd495c9068d698d.jpeg",
-    			description: "To be a successful dog or cat groomer, not only do you need to have a love for dogs — you need to possess specific skills to ensure you provide an excellent and safe service. ",
-    			_id: "dc888b1a-400f-47f3-9619-07607966feb8"
-    		},
-    		"733fa9a1-26b6-490d-b299-21f120b2f53a": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Dimitar Kovachev",
-                occupation:"Dog trainer",
-    			imageUrl: "https://images.petcareins.com/u/2022/02/02120145/dogtraining_hero-1-min.jpg",
-    			description: "Dog trainers use their knowledge of animal behavior to help people learn how to train their dogs. People most often bring their dogs to trainers because they want to teach them basic obedience skills or correct behavioral problems, but some specialized trainers prepare dogs for roles as police dogs, guide dogs, or therapy dogs.",
-    			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
-    		},
+        },
+
+        likes: {
+        },
+
+
+        teams: {
+            "34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Milena Todorova",
+                occupation: "Trainer",
+                imageUrl: "https://dogtrainingelite.com/oak/files/trainers/ne-ohio/andrea-johnson-ne-ohio.jpg",
+                description: "Dog trainers use their knowledge of animal behavior to help people learn how to train their dogs. People most often bring their dogs to trainers because they want to teach them basic obedience skills or correct behavioral problems, but some specialized trainers prepare dogs for roles as police dogs, guide dogs, or therapy dogs.",
+                _id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
+            },
+            "dc888b1a-400f-47f3-9619-07607966feb8": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Melisa Muniu",
+                occupation: "Groomer",
+                imageUrl: "https://www.petcareins.com/wp-content/uploads/2022/02/9b3da0af2784c0210f7f58a80fd495c9068d698d.jpeg",
+                description: "To be a successful dog or cat groomer, not only do you need to have a love for dogs — you need to possess specific skills to ensure you provide an excellent and safe service. ",
+                _id: "dc888b1a-400f-47f3-9619-07607966feb8"
+            },
+            "733fa9a1-26b6-490d-b299-21f120b2f53a": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Dimitar Kovachev",
+                occupation: "Dog trainer",
+                imageUrl: "https://images.petcareins.com/u/2022/02/02120145/dogtraining_hero-1-min.jpg",
+                description: "Dog trainers use their knowledge of animal behavior to help people learn how to train their dogs. People most often bring their dogs to trainers because they want to teach them basic obedience skills or correct behavioral problems, but some specialized trainers prepare dogs for roles as police dogs, guide dogs, or therapy dogs.",
+                _id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
+            },
             "733fa9a1-26b6-490d-b299-21f120b2f53b": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Andrea Savas",
-                occupation:"Cat trainer",
-    			imageUrl: "https://www.hepper.com/wp-content/uploads/2021/09/animal-shelter-for-cats_hedgehog94-Shutterstock.jpg",
-    			description: "If you’re going on a trip without your cat, you generally have three options: board them at a facility, leave them home alone, or have someone check up on them occasionally. Each of these options has its own pros and cons. Sometimes, one option may be completely impossible depending on the owner and cat. (For instance, cats with medication cannot be left at home alone.We are care for your cat.",
-    			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
-    		}
-    	},
-    	
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Andrea Savas",
+                occupation: "Cat trainer",
+                imageUrl: "https://www.hepper.com/wp-content/uploads/2021/09/animal-shelter-for-cats_hedgehog94-Shutterstock.jpg",
+                description: "If you’re going on a trip without your cat, you generally have three options: board them at a facility, leave them home alone, or have someone check up on them occasionally. Each of these options has its own pros and cons. Sometimes, one option may be completely impossible depending on the owner and cat. (For instance, cats with medication cannot be left at home alone.We are care for your cat.",
+                _id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
+            }
+        },
+
     };
     var rules$1 = {
-    	users: {
-    		".create": false,
-    		".read": [
-    			"Owner"
-    		],
-    		".update": false,
-    		".delete": false
-    	},
-    
+        users: {
+            ".create": false,
+            ".read": [
+                "Owner"
+            ],
+            ".update": false,
+            ".delete": false
+        },
+
     };
     var settings = {
-    	identity: identity,
-    	protectedData: protectedData,
-    	seedData: seedData,
-    	rules: rules$1
+        identity: identity,
+        protectedData: protectedData,
+        seedData: seedData,
+        rules: rules$1
     };
 
     const plugins = [

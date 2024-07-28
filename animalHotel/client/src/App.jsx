@@ -21,6 +21,7 @@ import ReviewDetails from './components/reviewDetail/ReviewDetails';
 import NotFound from './components/notFound/NotFound';
 import EditPost from './components/editPost/EditPost';
 import TeamDetails from './components/teams/teamDetails/TeamDetails';
+import Profile from './components/profile/Profile';
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     return {};
   });
 
-  const loginSubmitHandler = async(values) => {
+  const loginSubmitHandler = async (values) => {
     console.log(values)
     const result = await authService.login(values.email, values.password);
 
@@ -42,20 +43,30 @@ function App() {
     navigate(Path.Home)
   };
 
-  const registerSubmitHandler = async(values) => {
-    //console.log(values);
-   
-    const result = await authService.registerNew(values.username, values.email, values.password);
+  const registerSubmitHandler = async (values) => {
+    console.log(values);
 
-    setAuth(result);
-    localStorage.setItem('accessToken', result.accessToken);
-    navigate(Path.Home)
-};
+    if (values.password !== values.repass) {
+      throw new Error('Passwords do not match')
+    }
 
-const logoutHandler =()=> {
-  setAuth({});
-  localStorage.removeItem('accessToken');
-}
+    try {
+      const result = await authService.registerNew(values.username, values.email, values.password);
+
+      setAuth(result);
+      localStorage.setItem('accessToken', result.accessToken);
+      navigate(Path.Home)
+    } catch (err) {
+      console.log(err.message)
+    }
+
+
+  };
+
+  const logoutHandler = () => {
+    setAuth({});
+    localStorage.removeItem('accessToken');
+  }
 
   const values = {
     loginSubmitHandler,
@@ -66,7 +77,7 @@ const logoutHandler =()=> {
     email: auth.email,
     isAuthenticated: !!auth.accessToken,
   }
- // console.log(values)
+  // console.log(values)
 
   return (
 
@@ -78,16 +89,16 @@ const logoutHandler =()=> {
         <Routes>
           <Route path="/" element={<Header />} />
           <Route path="/services" element={<Team />} />
-          <Route path="/login" element={<Login />} />
           <Route path='/reviews' element={<Reviews />} />
           <Route path='/reviews/:reviewId' element={<ReviewDetails />} />
           <Route path='/teams/:teamId' element={<TeamDetails />} />
 
-
           <Route path='/reviews/create' element={<CreatePost />} />
-          <Route path='/reviews/:reviewId/edit' element= {<EditPost />} />
+          <Route path='/reviews/:reviewId/edit' element={<EditPost />} />
 
+          <Route path="/login" element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/logout' element={<Logout />} />
 
           <Route path='/*' element={<NotFound />} />

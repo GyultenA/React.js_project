@@ -1,6 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import AuthContext from '../../context/authContext';
 import useForm from '../hook/useForm';
@@ -17,6 +20,9 @@ const RegisterFormKeys = {
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
+   // const [errors, setErrors] = useState('')
+
+   
 
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [RegisterFormKeys.Username]: '',
@@ -65,6 +71,11 @@ export default function Register() {
                     onChange={onChange}
                     value={values[RegisterFormKeys.ConfirmPass]}
                 />
+
+              
+
+
+
                 <input type="submit" value="Register" />
                 <p>Already have an account? <Link to="/login">Login here</Link></p>
             </form>

@@ -17,19 +17,19 @@ export const login = async (email, password) => {
   return result;
 };
 
-export const register = (username, email, password) => {
-  const result = request.post(`${baseUrl}/register`, {
-    username,
-    email,
-    password
-  });
+//export const register = (username, email, password) => {
+ // const result = request.post(`${baseUrl}/register`, {
+   // username,
+   // email,
+   // password
+ // });
 
-  localStorage.setItem('email', result.email);
-  localStorage.setItem('accessToken', result.accessToken);
-  localStorage.setItem('userId', result._id)
+  //localStorage.setItem('email', result.email);
+  //localStorage.setItem('accessToken', result.accessToken);
+  //localStorage.setItem('userId', result._id)
 
-  return result;
-}
+  //return result;
+//}
 
 export const registerNew = async (username, email, password) => {
   const response = await fetch(`http://localhost:3030/users/register`, {
@@ -48,4 +48,14 @@ return response.json();
 }
 
 export const logout = () => request.get(`${baseUrl}/logout`);
+
+export const getUserDetails = async ()=> {
+ 
+  const response = await request.get(`${baseUrl}/me`);
+  const result = await response.json();
+
+  console.log(result)
+  return (result)
+
+}
 

@@ -24,19 +24,23 @@ export const createPosttwo  = async (reviewData) => {
 };
 
 export const getAll = async () => {
- const result = await request.get(baseUrl);
- //const reviews = Object.values(result)
- //console.log(result)
+  //const where = encodeURIComponent(`sortBy=_createdOn desc`);
+const where = `sortBy=_createdOn%20desc`
+ const result = await request.get(`${baseUrl}?${where}`);
+ console.log(result)
+ console.log(`${baseUrl}?${where}`)
  return result
+
 }
+
+//http://localhost:3030/data/reviews?sortBy%3D_createdOn%20desc
+ //                    /data/recipes?sortBy=_createdOn%20desc
 
 export const getOne = async (reviewId) => {
   try {
    // console.log(reviewId)
     const result = await request.get(`http://localhost:3030/data/reviews/${reviewId}`);
     //console.log(result)
-// const review = Object.values(result)
- //console.log(review)
  console.log(result)
  //(console.log(result.title))
    return result
