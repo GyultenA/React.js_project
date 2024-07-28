@@ -1,0 +1,12 @@
+.details {
+ 
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.details p:last-of-type  {
+    font-size: 30px;
+}

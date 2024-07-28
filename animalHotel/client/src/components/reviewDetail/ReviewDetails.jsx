@@ -36,12 +36,12 @@ export default function ReviewDetails() {
         }
     }, [reviewId]);
 
-    console.log('Current review state:', review); // Log the current state
+    //console.log('Current review state:', review); // Log the current state
 
-    console.log(review._ownerId)
+   // console.log(review._ownerId)
 
     const isOwner = review._ownerId === userId
-    console.log(isOwner)
+    //console.log(isOwner)
 
     const deleteClickHandler = async ()=> {
         const isConfirm = confirm(`Are you sure you want to delete review ${review.title}`);

@@ -20,6 +20,7 @@ import CreatePost from './components/createPost/CreatePost';
 import ReviewDetails from './components/reviewDetail/ReviewDetails';
 import NotFound from './components/notFound/NotFound';
 import EditPost from './components/editPost/EditPost';
+import TeamDetails from './components/teams/teamDetails/TeamDetails';
 
 
 function App() {
@@ -80,6 +81,7 @@ const logoutHandler =()=> {
           <Route path="/login" element={<Login />} />
           <Route path='/reviews' element={<Reviews />} />
           <Route path='/reviews/:reviewId' element={<ReviewDetails />} />
+          <Route path='/teams/:teamId' element={<TeamDetails />} />
 
 
           <Route path='/reviews/create' element={<CreatePost />} />

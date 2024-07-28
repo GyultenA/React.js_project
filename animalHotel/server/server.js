@@ -1381,23 +1381,34 @@
     	teams: {
     		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Storm Troopers",
-    			imageUrl: "/assets/team1.png",
-    			description: "These ARE the droids we're looking for",
+    			name: "Milena Todorova",
+                occupation:"Trainer",
+    			imageUrl: "https://dogtrainingelite.com/oak/files/trainers/ne-ohio/andrea-johnson-ne-ohio.jpg",
+    			description: "Dog trainers use their knowledge of animal behavior to help people learn how to train their dogs. People most often bring their dogs to trainers because they want to teach them basic obedience skills or correct behavioral problems, but some specialized trainers prepare dogs for roles as police dogs, guide dogs, or therapy dogs.",
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
     		},
     		"dc888b1a-400f-47f3-9619-07607966feb8": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Team Rocket",
-    			imageUrl: "/assets/rocket.png",
-    			description: "Gotta catch 'em all!",
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Melisa Muniu",
+                occupation:"Groomer",
+    			imageUrl: "https://www.petcareins.com/wp-content/uploads/2022/02/9b3da0af2784c0210f7f58a80fd495c9068d698d.jpeg",
+    			description: "To be a successful dog or cat groomer, not only do you need to have a love for dogs — you need to possess specific skills to ensure you provide an excellent and safe service. ",
     			_id: "dc888b1a-400f-47f3-9619-07607966feb8"
     		},
     		"733fa9a1-26b6-490d-b299-21f120b2f53a": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Minions",
-    			imageUrl: "/assets/hydrant.png",
-    			description: "Friendly neighbourhood jelly beans, helping evil-doers succeed.",
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Dimitar Kovachev",
+                occupation:"Dog trainer",
+    			imageUrl: "https://images.petcareins.com/u/2022/02/02120145/dogtraining_hero-1-min.jpg",
+    			description: "Dog trainers use their knowledge of animal behavior to help people learn how to train their dogs. People most often bring their dogs to trainers because they want to teach them basic obedience skills or correct behavioral problems, but some specialized trainers prepare dogs for roles as police dogs, guide dogs, or therapy dogs.",
+    			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
+    		},
+            "733fa9a1-26b6-490d-b299-21f120b2f53b": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Andrea Savas",
+                occupation:"Cat trainer",
+    			imageUrl: "https://www.hepper.com/wp-content/uploads/2021/09/animal-shelter-for-cats_hedgehog94-Shutterstock.jpg",
+    			description: "If you’re going on a trip without your cat, you generally have three options: board them at a facility, leave them home alone, or have someone check up on them occasionally. Each of these options has its own pros and cons. Sometimes, one option may be completely impossible depending on the owner and cat. (For instance, cats with medication cannot be left at home alone.We are care for your cat.",
     			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
     		}
     	},
