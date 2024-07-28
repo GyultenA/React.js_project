@@ -33,7 +33,7 @@ function App() {
   });
 
   const loginSubmitHandler = async (values) => {
-    console.log(values)
+   // console.log(values)
     const result = await authService.login(values.email, values.password);
 
     console.log(result);
@@ -44,7 +44,7 @@ function App() {
   };
 
   const registerSubmitHandler = async (values) => {
-    console.log(values);
+   // console.log(values);
 
     if (values.password !== values.repass) {
       throw new Error('Passwords do not match')

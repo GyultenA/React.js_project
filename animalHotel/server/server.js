@@ -1377,6 +1377,7 @@
                 title: "I highly recommend",
                 username: "Maria Petkova",
                 imageUrl: "https://t4.ftcdn.net/jpg/01/57/79/45/360_F_157794550_9HR4WdwqADVwp0TUoLS7wRd3yPjixtSx.jpg",
+                description: "This is the second time I use the hotel's services. I have not worried for a moment that our cat will not be taken care of.",
                 _createdOn: 1722163076632,
                 _id: "0f0cf27d-af21-4409-9238-37f40701222d"
             }

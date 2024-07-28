@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import AuthContext from '../../context/authContext';
 
@@ -9,8 +9,9 @@ import { createPost, createPosttwo } from '../../api/reviewsService';
 
 
 export default function CreatePost(){
+    const [reviews, setReviews] = useState([])
     const navigate = useNavigate();
-   // const {username} = useContext(AuthContext)
+   const {username} = useContext(AuthContext)
 
 
  const createPostSumbitHandler = async (e)=> {

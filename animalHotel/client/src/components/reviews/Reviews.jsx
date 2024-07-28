@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { Link, Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Reviews.module.css"
 import { useEffect } from "react";
 
 //import {get } from '../../lib/request'
 import ReviewItem from "./reviewItem/ReviewItem";
 import * as reviewsService from '../../api/reviewsService'
+import AuthContext from "../../context/authContext";
 
 export default function Reviews() {
+  const { isAuthenticated } = useContext(AuthContext)
   const [reviews, setReviews] = useState([]);
 
 
@@ -28,9 +30,9 @@ export default function Reviews() {
         </h3>
         {/* Blog list Start */}
         <div className="col-lg-8">
-          
-          {reviews.map(review => <ReviewItem key={review._id} {...review}/>)}
-         
+
+          {reviews.map(review => <ReviewItem key={review._id} {...review} />)}
+
           <div className="col-12">
             <nav aria-label="Page navigation">
               <ul className="pagination pagination-lg m-0">
@@ -84,10 +86,13 @@ export default function Reviews() {
             </div>
           </div>
           {/* Search Form End */}
+          {isAuthenticated && (
+            <Link to="create" className={styles.button}>Create post
+            </Link>
+          )}
 
-          <Link to="create" className={styles.button}>Create post
-          </Link>
-         
+
+
 
 
         </div>

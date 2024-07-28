@@ -27,8 +27,8 @@ export const getAll = async () => {
   //const where = encodeURIComponent(`sortBy=_createdOn desc`);
 const where = `sortBy=_createdOn%20desc`
  const result = await request.get(`${baseUrl}?${where}`);
- console.log(result)
- console.log(`${baseUrl}?${where}`)
+ //console.log(result)
+ //console.log(`${baseUrl}?${where}`)
  return result
 
 }
@@ -60,11 +60,25 @@ export const editPost = async (gameId, gameData) => {
 };
 
 
-export const getUser = async(ownerId) => {
-  const response = await fetch('http://localhost:3030/users')
-  const result = await response.json()
-  console.log(result)
+export const getUserPosts = async( userId) => {
+ // const load = encodeURIComponent(`_ownerId="${userId}"`);
+
+//const query = `where=recipeId%3D%22${reviewId}%22&load=author%3${userId}%3Ausers`
+console.log(userId)
+const query = encodeURIComponent(`_ownerId="${userId}"`);
+
+
+  const response = await request.get(`${baseUrl}?where=${query}`)
+ // const result = await response.json()
+
+ //console.log(`${baseUrl}?where=${query}`)
+// console.log(response)
+ return response
 }
+
+//     data/reviews?where=_ownerId%3D%22undefined%22
+//GET /data/comments?where=recipeId%3D%228f414b4f-ab39-4d36-bedb-2ad69da9c830%22
+//GET /data/comments?where=recipeId%3D%228f414b4f-ab39-4d36-bedb-2ad69da9c830%22&load=author%3D_ownerId%3Ausers
 
 //export const createReview = async (body) => {
   //  const result = await post(baseUrl, { ...body });
