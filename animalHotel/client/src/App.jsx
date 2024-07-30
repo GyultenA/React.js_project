@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 
-import {AuthContextProvider} from './context/authContext';
-
+import { AuthContextProvider } from './context/authContext';
+import AuthGuard from './components/guards/AuthGuard';
 
 import TopBar from "./components/topBar/TopBar";
 import Header from "./components/header/Header";
@@ -23,6 +23,7 @@ import TeamDetails from './components/teams/teamDetails/TeamDetails';
 import Profile from './components/profile/Profile';
 
 
+
 function App() {
 
 
@@ -39,14 +40,15 @@ function App() {
           <Route path='/reviews' element={<Reviews />} />
           <Route path='/reviews/:reviewId' element={<ReviewDetails />} />
           <Route path='/teams/:teamId' element={<TeamDetails />} />
-
-          <Route path='/reviews/create' element={<CreatePost />} />
-          <Route path='/reviews/:reviewId/edit' element={<EditPost />} />
-
           <Route path="/login" element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/logout' element={<Logout />} />
+
+          <Route element={<AuthGuard />} >
+            <Route path='/reviews/create' element={<CreatePost />} />
+            <Route path='/reviews/:reviewId/edit' element={<EditPost />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/logout' element={<Logout />} />
+          </Route>
 
           <Route path='/*' element={<NotFound />} />
 

@@ -20,9 +20,9 @@ const RegisterFormKeys = {
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
-   // const [errors, setErrors] = useState('')
+    // const [errors, setErrors] = useState('')
 
-   
+
 
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [RegisterFormKeys.Username]: '',
@@ -36,57 +36,57 @@ export default function Register() {
     return (
 
         <div >
-              <div className={styles.register}>
-            <h1>Register</h1>
-            <h4>It is free and only takes a minute</h4>
-            <form onSubmit={onSubmit}>
-                <label>Username</label>
-                <input type="text"
-                    name="username"
-                    placeholder="Username.."
-                    onChange={onChange}
-                    value={values[RegisterFormKeys.Username]}
-                />
+            <div className={styles.register}>
+                <h1>Register</h1>
+                <h4>It is free and only takes a minute</h4>
+                <form onSubmit={onSubmit}>
+                    <label>Username</label>
+                    <input type="text"
+                        name="username"
+                        placeholder="Username.."
+                        onChange={onChange}
+                        value={values[RegisterFormKeys.Username]}
+                    />
 
-                <label>Email</label>
-                <input type="text"
-                    name="email"
-                    placeholder="Email.."
-                    onChange={onChange}
-                    values={values[RegisterFormKeys.Email]}
-                />
+                    <label>Email</label>
+                    <input type="text"
+                        name="email"
+                        placeholder="Email.."
+                        onChange={onChange}
+                        values={values[RegisterFormKeys.Email]}
+                    />
 
-                <label>Password</label>
-                <input type="password"
-                    name="password"
-                    placeholder="Password.."
-                    onChange={onChange}
-                    value={values[RegisterFormKeys.Password]}
-                />
+                    <label>Password</label>
+                    <input type="password"
+                        name="password"
+                        placeholder="Password.."
+                        onChange={onChange}
+                        value={values[RegisterFormKeys.Password]}
+                    />
 
-                <label>Confirm Password</label>
-                <input type="password"
-                    name="repass"
-                    placeholder="Confirm Password.."
-                    onChange={onChange}
-                    value={values[RegisterFormKeys.ConfirmPass]}
-                />
-
-              
+                    <label>Confirm Password</label>
+                    <input type="password"
+                        name="repass"
+                        placeholder="Confirm Password.."
+                        onChange={onChange}
+                        value={values[RegisterFormKeys.ConfirmPass]}
+                    />
 
 
 
-                <input type="submit" value="Register" />
-                <p>Already have an account? <Link to="/login">Login here</Link></p>
-            </form>
-            <div>
+
+
+                    <input type="submit" value="Register" />
+                    <p>Already have an account? <Link to="/login">Login here</Link></p>
+                </form>
+                <div>
+
+                </div>
 
             </div>
 
         </div>
 
-        </div>
-      
 
 
 
