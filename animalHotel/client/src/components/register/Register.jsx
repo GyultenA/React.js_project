@@ -40,7 +40,7 @@ export default function Register() {
                     <h1>Register</h1>
                     <h4>It is free and only takes a minute</h4>
                     <form onSubmit={onSubmit}>
-                        <label>Username</label>
+                        <label></label>
                         <input type="text"
                             name="username"
                             placeholder="Your name.."
@@ -52,7 +52,7 @@ export default function Register() {
                             required
                         />
 
-                        <label>Email</label>
+                        <label></label>
                         <input type="text"
                             name="email"
                             placeholder="Email.."
@@ -62,7 +62,7 @@ export default function Register() {
                             required
                         />
 
-                        <label>Password</label>
+                        <label></label>
                         <input type="password"
                             name="password"
                             placeholder="Password.."
@@ -72,7 +72,7 @@ export default function Register() {
                             required
                         />
 
-                        <label>Confirm Password</label>
+                        <label></label>
                         <input type="password"
                             name="repass"
                             placeholder="Confirm Password.."
@@ -85,7 +85,7 @@ export default function Register() {
                         />
 
                         <input type="submit" value="Register" />
-                        <p>Already have an account? <Link to="/login">Login here</Link></p>
+                        <p>Already have an account? <Link to="/login" style={{fontWeight: "bold"}}>Login here</Link></p>
                     </form>
                     <div>
 

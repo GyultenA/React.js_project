@@ -11,48 +11,54 @@ import Errors from "../errors/Errors";
 
 export default function Login() {
 
-    const {loginSubmitHandler, errorsHandler, clearErrors} = useContext(AuthContext);
+    const { loginSubmitHandler, errorsHandler, clearErrors } = useContext(AuthContext);
 
-    const {values, onChange, onSubmit} = useForm(loginSubmitHandler,{
-        email:'',
-        password:'',
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        email: '',
+        password: '',
     });
 
-   
+
 
     return (
         <>
-      
-        <main className={styles.login}>
-            <div className={styles.loginbox}>
-                <h1>Login</h1>
-                <form onSubmit={onSubmit}>
-                    <label>Email</label>
-                    <input type="email" 
-                    name="email"
-                    placeholder="Email.." 
-                    onChange={onChange}
-                    value={values.email}
-                    required
-                    onFocus={clearErrors}
-                    />
-                    <label>Password</label>
-                    <input type="password" 
-                    name="password"
-                    placeholder="Password.."
-                    onChange={onChange}
-                    value={values.password}
-                    required
-                    onFocus={clearErrors}
-                    />
-                  
-                    <input type="submit" value="Login" />
-                </form>
-                <p>Do not have an account? <Link to="/register">Register here</Link></p>
-            </div>
-        </main>
 
-        {errorsHandler && <Errors error= { errorsHandler} />}
-  </>
+            <main className={styles.login}>
+                <section className={styles.loginbox}>
+                    <div className={styles.loginSection}>
+                        <h1>SIGN IN</h1>
+                        <form onSubmit={onSubmit}>
+                           
+                                <label>Email</label>
+                                <input className={styles.inputFields} type="email"
+                                    name="email"
+                                    placeholder="Email.."
+                                    onChange={onChange}
+                                    value={values.email}
+                                    required
+                                    onFocus={clearErrors}
+                                />
+
+
+                            <label>Password</label>
+                            <input  className={styles.inputFields} type="password"
+                                name="password"
+                                placeholder="Password.."
+                                onChange={onChange}
+                                value={values.password}
+                                required
+                                onFocus={clearErrors}
+                            />
+
+                            <input type="submit" value="Login" />
+                        </form>
+                        <p className={styles["message"]}>Do not have an account? <Link to="/register" className={styles.link}>Register here</Link></p>
+                    </div>
+                </section>
+
+            </main>
+
+            {errorsHandler && <Errors error={errorsHandler} />}
+        </>
     )
 }

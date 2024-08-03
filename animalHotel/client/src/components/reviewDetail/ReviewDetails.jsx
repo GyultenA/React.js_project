@@ -13,7 +13,7 @@ import AuthContext from "../../context/authContext";
 
 
 export default function ReviewDetails() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { userId, isAuthenticated } = useContext(AuthContext)
     const { reviewId } = useParams();
     const [review, setReview] = useState({}); // Initialize with null to indicate loading state
@@ -56,7 +56,7 @@ export default function ReviewDetails() {
 
     return (
         <article className={styles.details}>
-            <h3>Title: {review?.title || 'No title available'}</h3>
+            <h3>{review?.title || 'No title available'}</h3>
             <p>Created at: {review?._createdOn ? new Date(review._createdOn).toLocaleDateString() : 'No date available'}</p>
             <p>Post by: {review.username}</p>
             <div>

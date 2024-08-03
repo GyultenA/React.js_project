@@ -13,7 +13,7 @@ import { getUserPosts } from '../../api/reviewsService';
 export default function Profile() {
 
     const { username, email, userId } = useContext(AuthContext);
-    console.log(userId)
+    //console.log(userId)
     const [userReviews, setUserReviews] = useState([])
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function Profile() {
             .then(result => setUserReviews(result))
     }, [userId])
 
-    console.log(userReviews)
+    //console.log(userReviews)
 
     return (
         <>

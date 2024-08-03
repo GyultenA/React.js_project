@@ -1,16 +1,17 @@
 .button {
         height: 15%;
-        background-color: #509d34;
+        background-color: #7AB730;
         padding: 14px;
         margin-top: auto;
-        margin-left: 70px;
-        font-size: 40px;
+        margin-left: 20px;
+        font-size: 25px;
         color: rgb(255, 255, 255);
         height: 10%;
         text-align: center;
         padding-right: 30px;
         padding-left: 30px;
         padding-bottom: 20px;
+        border-radius: 4px;
     }
     
  .button:hover {
@@ -18,13 +19,3 @@
         color: white;
  }
 
- .registerPage {
-       position: relative;
-       width: 650px;
-       height: auto;
-       border-radius: 20px;
-       padding: 40px;
-       box-sizing: border-box;
-       background: #3e4443;
-       box-shadow: 0px 0px 32px 0px #49535e, -14px -14px 20px #191c21;
- }
