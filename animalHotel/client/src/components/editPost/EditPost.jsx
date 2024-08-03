@@ -1,19 +1,20 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams, } from 'react-router-dom';
 
 import styles from './EditPost.module.css';
 import AuthContext from '../../context/authContext';
 import { getOne, editPost } from '../../api/reviewsService';
+import Errors from '../errors/Errors';
 
 
 
 export default function EditPost() {
     const navigate = useNavigate();
     const { reviewId } = useParams();
-    const {username} = useContext(AuthContext)
+    const {username, errorsHandler, clearErrors } = useContext(AuthContext)
     const [review, setReview] = useState({
         title: '',
-       
         imageUrl: '',
         description: '',
     });
@@ -29,17 +30,18 @@ export default function EditPost() {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        console.log(formData)
+        //console.log(formData)
 
         const values = Object.fromEntries(formData)
         values.username = username
 
         try {
             await editPost(reviewId, values);
-            navigate('/reviews')
-        } catch (err) {
-            console.log(err)
-            throw new Error('Edit is not successful ')
+            navigate('/reviews');
+        } catch (error) {
+           // console.log(err)
+           throw new Error('Edit is not successful ');
+
         }
     }
 
@@ -51,6 +53,8 @@ export default function EditPost() {
     }
 
     return (
+        <>
+       
         <section className={styles.editpage}>
             <form id="edit" onSubmit={editSubmitHandler}>
                 <div className={styles.container}>
@@ -59,7 +63,9 @@ export default function EditPost() {
                     <input type="text" id="title" name="title"
                     value={review.title}
                     onChange={onChange} 
-                    placeholder="Enter title..." />
+                    placeholder="Enter title..."
+                    required
+                    minLength="6" />
 
                   {/**<label htmlFor="username">Username:</label>
                     <input type="text" id="username" name="username"
@@ -71,17 +77,25 @@ export default function EditPost() {
                     <input type="text" id="imageUrl" name="imageUrl" 
                     value={review.imageUrl}
                     onChange={onChange}
-                    placeholder="Upload a photo..." />
+                    placeholder="Upload a photo..."
+                    required
+                     />
 
                     <label htmlFor="description">POST:</label>
                     <textarea name="description" id="description"
                     value={review.description}
                     onChange={onChange}
+                    required
+                    minLength="20"
+                    maxLength="250"
                     ></textarea>
                     <input className="btn submit" type="submit" value="Edit review" />
                 </div>
             </form>
         </section>
+        { errorsHandler && <Errors error={errorsHandler}/>}
+
+        </>
     )
 
 }

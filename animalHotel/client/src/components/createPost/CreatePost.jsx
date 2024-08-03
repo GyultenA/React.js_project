@@ -11,17 +11,15 @@ import { createPost, createPosttwo } from '../../api/reviewsService';
 export default function CreatePost(){
     const [reviews, setReviews] = useState({})
     const navigate = useNavigate();
-   const {username} = useContext(AuthContext)
+   const {username, errorsHandler, clearErrors} = useContext(AuthContext)
 
 
  const createPostSumbitHandler = async (e)=> {
     e.preventDefault();
     const createData = new FormData(e.currentTarget);
-   
-
     const postData = Object.fromEntries(createData);
-   console.log (postData)
-   postData.username = username
+  // console.log (postData)
+   postData.username = username;
 
        try {
 
@@ -46,16 +44,29 @@ export default function CreatePost(){
             <div className={styles.container}>
                 <h1>Create Post</h1>
                 <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="Enter title..." />
+                <input type="text" id="title" 
+                name="title" 
+                placeholder="Enter title..."
+                required
+                minLength={6}
+                 />
 
                {/**<label htmlFor="username">Username:</label>
                 <input type="text" id="username" name="username"  /> */} 
 
                 <label htmlFor="imageUrl">Image:</label>
-                <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
+                <input type="text" id="imageUrl" 
+                name="imageUrl" 
+                placeholder="Upload a photo..."
+                required
+                />
 
                 <label htmlFor="description">POST:</label>
-                <textarea name="description" id="description"></textarea>
+                <textarea name="description"
+                required
+                minLength="10"
+                maxLength={250} 
+                id="description"></textarea>
                 <input className="btn submit" type="submit" value="Create Post" />
             </div>
         </form>

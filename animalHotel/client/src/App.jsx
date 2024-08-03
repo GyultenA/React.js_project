@@ -41,12 +41,12 @@ function App() {
           <Route path='/reviews/:reviewId' element={<ReviewDetails />} />
           <Route path='/teams/:teamId' element={<TeamDetails />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/register' element={<Register />} />
 
           <Route element={<AuthGuard />} >
             <Route path='/reviews/create' element={<CreatePost />} />
             <Route path='/reviews/:reviewId/edit' element={<EditPost />} />
             <Route path='/profile' element={<Profile />} />
-            <Route path='/register' element={<Register />} />
             <Route path='/logout' element={<Logout />} />
           </Route>
 

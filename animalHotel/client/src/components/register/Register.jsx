@@ -3,12 +3,12 @@
 /* eslint-disable no-undef */
 
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 
 import AuthContext from '../../context/authContext';
 import useForm from '../hook/useForm';
-
 import styles from './Register.module.css';
+import Errors from '../errors/Errors';
 
 
 const RegisterFormKeys = {
@@ -19,8 +19,7 @@ const RegisterFormKeys = {
 }
 
 export default function Register() {
-    const { registerSubmitHandler } = useContext(AuthContext);
-    // const [errors, setErrors] = useState('')
+    const { registerSubmitHandler, errorsHandler, clearErrors } = useContext(AuthContext);
 
 
 
@@ -34,60 +33,70 @@ export default function Register() {
 
 
     return (
+        <>
 
-        <div >
-            <div className={styles.register}>
-                <h1>Register</h1>
-                <h4>It is free and only takes a minute</h4>
-                <form onSubmit={onSubmit}>
-                    <label>Username</label>
-                    <input type="text"
-                        name="username"
-                        placeholder="Username.."
-                        onChange={onChange}
-                        value={values[RegisterFormKeys.Username]}
-                    />
+            <div >
+                <div className={styles.register}>
+                    <h1>Register</h1>
+                    <h4>It is free and only takes a minute</h4>
+                    <form onSubmit={onSubmit}>
+                        <label>Username</label>
+                        <input type="text"
+                            name="username"
+                            placeholder="Your name.."
+                            onFocus={clearErrors}
+                            onChange={onChange}
+                            value={values[RegisterFormKeys.Username]}
+                            minLength={3}
+                            maxLength="50"
+                            required
+                        />
 
-                    <label>Email</label>
-                    <input type="text"
-                        name="email"
-                        placeholder="Email.."
-                        onChange={onChange}
-                        values={values[RegisterFormKeys.Email]}
-                    />
+                        <label>Email</label>
+                        <input type="text"
+                            name="email"
+                            placeholder="Email.."
+                            onFocus={clearErrors}
+                            onChange={onChange}
+                            values={values[RegisterFormKeys.Email]}
+                            required
+                        />
 
-                    <label>Password</label>
-                    <input type="password"
-                        name="password"
-                        placeholder="Password.."
-                        onChange={onChange}
-                        value={values[RegisterFormKeys.Password]}
-                    />
+                        <label>Password</label>
+                        <input type="password"
+                            name="password"
+                            placeholder="Password.."
+                            onFocus={clearErrors}
+                            onChange={onChange}
+                            value={values[RegisterFormKeys.Password]}
+                            required
+                        />
 
-                    <label>Confirm Password</label>
-                    <input type="password"
-                        name="repass"
-                        placeholder="Confirm Password.."
-                        onChange={onChange}
-                        value={values[RegisterFormKeys.ConfirmPass]}
-                    />
+                        <label>Confirm Password</label>
+                        <input type="password"
+                            name="repass"
+                            placeholder="Confirm Password.."
+                            onFocus={clearErrors}
+                            onChange={onChange}
+                            value={values[RegisterFormKeys.ConfirmPass]}
+                            minLength={4}
+                            maxLength={8}
+                            required
+                        />
 
+                        <input type="submit" value="Register" />
+                        <p>Already have an account? <Link to="/login">Login here</Link></p>
+                    </form>
+                    <div>
 
-
-
-
-                    <input type="submit" value="Register" />
-                    <p>Already have an account? <Link to="/login">Login here</Link></p>
-                </form>
-                <div>
+                    </div>
 
                 </div>
 
             </div>
+            {errorsHandler && < Errors error={errorsHandler} />}
 
-        </div>
-
-
+        </>
 
 
 
