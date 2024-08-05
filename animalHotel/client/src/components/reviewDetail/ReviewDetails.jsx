@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-//import AuthContext from "../../context/authContext";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { getOne, remove } from "../../api/reviewsService";
@@ -14,17 +13,16 @@ import AuthContext from "../../context/authContext";
 
 export default function ReviewDetails() {
     const navigate = useNavigate();
-    const { userId, isAuthenticated } = useContext(AuthContext)
+    const { userId, isAuthenticated } = useContext(AuthContext);
     const { reviewId } = useParams();
-    const [review, setReview] = useState({}); // Initialize with null to indicate loading state
+    const [review, setReview] = useState({}); 
     const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
         if (reviewId) {
             getOne(reviewId)
-                .then((data) => {
-                    console.log('Fetched data:', data); // Log the fetched data
+                .then((data) => { 
                     setReview(data);
 
                 })
@@ -36,7 +34,7 @@ export default function ReviewDetails() {
         }
     }, [reviewId]);
 
-    //console.log('Current review state:', review); // Log the current state
+    //console.log('Current review state:', review); 
 
    // console.log(review._ownerId)
 

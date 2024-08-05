@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import Card from 'react-bootstrap/Card';
 import { useNavigate, useParams, Link } from "react-router-dom";
-//import { useContext } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "./ProfilePost.module.css"
 
 
 import { formatDate } from '../../../lib/formatData';
 import { remove } from "../../../api/reviewsService";
-//import { AuthContext } from '../../../context/authContext';
+import { getOne } from '../../../api/reviewsService';
 
 
 export default function ProfilePost({
@@ -15,12 +16,14 @@ export default function ProfilePost({
   description,
   imageUrl,
   _createdOn,
+  _id,
 
 }) {
 
   const navigate = useNavigate();
-  const { reviewId } = useParams();
-  //const { userId } = useContext(AuthContext);
+  //const { reviewId } = useParams();
+console.log(_id)
+
 
 
 
@@ -28,7 +31,7 @@ export default function ProfilePost({
     const isConfirm = confirm(`Are you sure you want to delete review ${title}`);
 
     if (isConfirm) {
-      await remove(reviewId);
+      await remove(_id);
       navigate('/reviews')
     }
 
@@ -46,7 +49,7 @@ export default function ProfilePost({
       <Card.Footer>
         <small className="text-muted">{formatDate(_createdOn)}</small>
         <div className={styles["btn-profiler"]}>
-          <Link to={`/reviews/${reviewId}/edit`} className={styles.btn}>Edit</Link>
+          <Link to={`/reviews/${_id}/edit`} className={styles.btn}>Edit</Link>
           <button className={styles.btn} onClick={deleteClickHandler}>Delete</button>
         </div>
       </Card.Footer>

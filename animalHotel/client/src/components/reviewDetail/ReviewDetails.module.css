@@ -1,5 +1,4 @@
 .details {
- 
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -7,17 +6,15 @@
     justify-content: center;
 }
 
-.details p:last-of-type  {
+.details p:last-of-type {
     font-size: 30px;
 }
 
 .buttons {
     height: 15%;
-   
- display: flex;
- flex-wrap: wrap;
- gap: 20px;
- 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     padding-bottom: 40px;
 }
 

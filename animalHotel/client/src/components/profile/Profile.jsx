@@ -3,6 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import CardGroup from 'react-bootstrap/CardGroup';
 
 import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import AuthContext from '../../context/authContext';
 import styles from "./Profile.module.css"
@@ -14,14 +15,19 @@ export default function Profile() {
 
     const { username, email, userId } = useContext(AuthContext);
     //console.log(userId)
-    const [userReviews, setUserReviews] = useState([])
+    const [userReviews, setUserReviews] = useState([]);
+    const { reviewId } = useParams();
+    console.log(reviewId)
 
     useEffect(() => {
         getUserPosts(userId)
             .then(result => setUserReviews(result))
     }, [userId])
 
-    //console.log(userReviews)
+    console.log(userReviews)
+   
+
+  
 
     return (
         <>
