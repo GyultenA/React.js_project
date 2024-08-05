@@ -22,7 +22,7 @@ export default function ReviewDetails() {
     const { reviewId } = useParams();
     const [review, setReview] = useState({});
     const [loading, setLoading] = useState(true);
-    const [showModal, setShowModal] = useState (false);
+    const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
 
@@ -31,19 +31,15 @@ export default function ReviewDetails() {
             getOne(reviewId)
                 .then((data) => {
                     setReview(data);
-
                 })
                 .catch((error) => {
-                    console.error('Error fetching review:', error);
-
+                    setModalMessage(`${error.message}`);
+                    setShowModal(true);
 
                 });
         }
     }, [reviewId]);
 
-    //console.log('Current review state:', review); 
-
-    // console.log(review._ownerId)
 
     const isOwner = review._ownerId === userId
     //console.log(isOwner)
@@ -53,13 +49,13 @@ export default function ReviewDetails() {
         setShowModal(true);
     }
 
-    const handleModalConfirm = async(isConfirm) => {
+    const handleModalConfirm = async (isConfirm) => {
         setShowModal(false);
-        if(isConfirm){
+        if (isConfirm) {
             try {
                 await remove(reviewId);
                 navigate('/reviews')
-            }catch(err){
+            } catch (err) {
                 setModalMessage(`Error: ${err.message}`);
                 setShowModal(true);
             }
@@ -67,57 +63,54 @@ export default function ReviewDetails() {
     }
 
     const ErrorsMessage = ({ message, isConfirm }) => {
-      
-            return (
-                <Modal show onHide={() => isConfirm(false)}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Message</Modal.Title>
-                </Modal.Header>
-          
-                <Modal.Body>
-                  <p>{message}</p>
-                </Modal.Body>
-          
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={() => isConfirm(false)}>
-                    No
-                  </Button>
-                  <Button variant="primary" onClick={() => isConfirm(true)}>
-                    Yes
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-            )
-
-        }
-    
-
-
         return (
-            <article className={styles.details}>
-                <h3>{review?.title || 'No title available'}</h3>
-                <p>Created at: {review?._createdOn ? new Date(review._createdOn).toLocaleDateString() : 'No date available'}</p>
-                <p>Post by: {review.username}</p>
-                <div>
-                    <img src={review?.imageUrl || ''} alt={review?.title || 'Image'} />
-                </div>
-                <p>Review: {review?.description || 'No description available'}</p>
-
-                {isOwner && (
-                    <>
-                        <div className={styles.buttons}>
-                            <Link to={`/reviews/${reviewId}/edit`} className={styles.button}>Edit</Link>
-                            <button className={styles.button} onClick={deleteClickHandler}>Delete</button>
-
-                            {showModal && (
-                                <ErrorsMessage message={modalMessage} isConfirm={handleModalConfirm} />
-                            )}
-                        </div>
-                    </>
-
-                )}
-            </article>
-
-        );
+            <Modal show onHide={() => isConfirm(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Message</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>{message}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => isConfirm(false)}>
+                        No
+                    </Button>
+                    <Button variant="primary" onClick={() => isConfirm(true)}>
+                        Yes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        )
 
     }
+
+
+
+    return (
+        <article className={styles.details}>
+            <h3>{review?.title || 'No title available'}</h3>
+            <p>Created at: {review?._createdOn ? new Date(review._createdOn).toLocaleDateString() : 'No date available'}</p>
+            <p>Post by: {review.username}</p>
+            <div>
+                <img src={review?.imageUrl || ''} alt={review?.title || 'Image'} />
+            </div>
+            <p>Review: {review?.description || 'No description available'}</p>
+
+            {isOwner && (
+                <>
+                    <div className={styles.buttons}>
+                        <Link to={`/reviews/${reviewId}/edit`} className={styles.button}>Edit</Link>
+                        <button className={styles.button} onClick={deleteClickHandler}>Delete</button>
+
+                        {showModal && (
+                            <ErrorsMessage message={modalMessage} isConfirm={handleModalConfirm} />
+                        )}
+                    </div>
+                </>
+
+            )}
+        </article>
+
+    );
+
+}

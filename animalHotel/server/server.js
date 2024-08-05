@@ -1337,6 +1337,12 @@
                 username: "Maria Petkova",
                 hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
 
+            },
+            "65c62be3-fa00-457d-8690-eb9574eca90c": {
+                email: "elena@gmail.com",
+                username: "Elena",
+                hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+
             }
         },
         sessions: {

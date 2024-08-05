@@ -3,23 +3,23 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
+import styles from './Login.module.css';
 import AuthContext from "../../context/authContext";
 import useForm from "../hook/useForm";
-import styles from './Login.module.css';
-import Errors from "../errors/Errors";
+import Errors from '../errors/Errors';
+
 
 
 export default function Login() {
 
-    const { loginSubmitHandler } = useContext(AuthContext);
+    const { loginSubmitHandler, errorsHandler } = useContext(AuthContext);
 
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         email: '',
         password: '',
     });
 
-
-
+   
     return (
         <>
             <main className={styles.login}>
@@ -35,7 +35,6 @@ export default function Login() {
                                 onChange={onChange}
                                 value={values.email}
 
-
                             />
 
 
@@ -46,7 +45,6 @@ export default function Login() {
                                 onChange={onChange}
                                 value={values.password}
 
-
                             />
 
                             <input type="submit" value="Login" />
@@ -54,7 +52,7 @@ export default function Login() {
                         <p className={styles["message"]}>Do not have an account? <Link to="/register" className={styles.link}>Register here</Link></p>
                     </div>
                 </section>
-
+                {errorsHandler && < Errors error={errorsHandler} />}
             </main>
 
         </>

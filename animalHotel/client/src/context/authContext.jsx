@@ -26,44 +26,62 @@ export function AuthContextProvider(props) {
   });
 
   const loginSubmitHandler = async (values) => {
-    // console.log(values)
 
     try {
       const result = await authService.login(values.email, values.password);
 
-      if (!result.email || !result.password) {
-        setModalMessage("All fields are riquired!");
-        setShowModal(true);
-        return;
-      }
+    //  if (!result.email || !result.password) {
+       // setModalMessage("All fields are riquired!");
+       // setShowModal(true);
+       // return;
+    //  }
 
-      //console.log(result);
       setAuth(result);
       localStorage.setItem('accessToken', result.accessToken);
       navigate(Path.Home);
     } catch (error) {
-      setModalMessage(`Error: ${error.message}`);
+      setModalMessage(`Message: ${error.message}`);
       setShowModal(true);
     }
 
   };
 
   const registerSubmitHandler = async (values) => {
-    // console.log(values);
+  
     try {
 
       if (values.password !== values.repass) {
         setModalMessage('Passwords do not match');
-        setShowModal(true)
-        return;
-      }
-
-
-      if(!values.username || !values.email){
-        setModalMessage('All fields are required');
         setShowModal(true);
         return;
       }
+
+      if (values.password.length < 2 || values.password.length > 9) {
+        setModalMessage('Password should be between 2 and 8 characters long');
+        setShowModal(true);
+        return;
+      }
+
+     if (!values.username || !values.email) {
+      setModalMessage('All fields are required');
+       setShowModal(true);
+      return;
+     }
+
+      if (values.username.length < 5) {
+        setModalMessage('Your name should be at least 4 characters long');
+        setShowModal(true);
+        return;
+      }
+
+      const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      if (!regexEmail.test(values.email)) {
+        setModalMessage('Invalid email!');
+        setShowModal(true);
+        return;
+      }
+
 
       const result = await authService.registerNew(values.username, values.email, values.password);
       setAuth(result);
@@ -71,7 +89,7 @@ export function AuthContextProvider(props) {
       navigate(Path.Home);
       setErrors(null)
     } catch (err) {
-      setModalMessage(`Error: ${err.message}`);
+      setModalMessage(`Message: ${err.message}`);
       setShowModal(true);
     }
 
@@ -84,18 +102,18 @@ export function AuthContextProvider(props) {
   }
 
 
-  const ErrorsMessage = ({ message, show}) => {
-      
+  const ErrorsMessage = ({ message, show }) => {
+
     return (
-        <Modal show={show} onHide={() => setShowModal(false)}>
+      <Modal show={show} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Message</Modal.Title>
         </Modal.Header>
-  
+
         <Modal.Body>
           <p>{message}</p>
         </Modal.Body>
-  
+
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Close
@@ -103,7 +121,7 @@ export function AuthContextProvider(props) {
         </Modal.Footer>
       </Modal>
     )
-  
+
   }
 
   const values = {

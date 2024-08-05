@@ -1,5 +1,4 @@
 .details {
- 
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -7,9 +6,9 @@
     justify-content: center;
 }
 
-.details p:last-of-type  {
-    font-size: 20px;
-   text-align: center;
+.details p:last-of-type {
+    font-size: 26px;
+    text-align: center;
     padding-left: 100px;
     padding-right: 100px;
 }

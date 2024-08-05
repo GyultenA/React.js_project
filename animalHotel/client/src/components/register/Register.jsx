@@ -19,9 +19,7 @@ const RegisterFormKeys = {
 }
 
 export default function Register() {
-    const { registerSubmitHandler, errorsHandler, clearErrors } = useContext(AuthContext);
-
-
+    const { registerSubmitHandler, errorsHandler } = useContext(AuthContext);
 
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [RegisterFormKeys.Username]: '',
@@ -44,10 +42,8 @@ export default function Register() {
                         <input type="text"
                             name="username"
                             placeholder="Your name.."
-                           
                             onChange={onChange}
                             value={values[RegisterFormKeys.Username]}
-                            minLength={3}
                             maxLength="50"
                         
                         />
@@ -56,7 +52,6 @@ export default function Register() {
                         <input type="text"
                             name="email"
                             placeholder="Email.."
-                           
                             onChange={onChange}
                             values={values[RegisterFormKeys.Email]}
                           
@@ -66,7 +61,6 @@ export default function Register() {
                         <input type="password"
                             name="password"
                             placeholder="Password.."
-                           
                             onChange={onChange}
                             value={values[RegisterFormKeys.Password]}
                            
@@ -76,11 +70,8 @@ export default function Register() {
                         <input type="password"
                             name="repass"
                             placeholder="Confirm Password.."
-                         
                             onChange={onChange}
                             value={values[RegisterFormKeys.ConfirmPass]}
-                            minLength={4}
-                            maxLength={8}
                             
                         />
 

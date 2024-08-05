@@ -8,6 +8,9 @@
 
 .details p:last-of-type {
     font-size: 30px;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .buttons {
@@ -20,11 +23,11 @@
 
 .button {
     height: 15%;
-    background-color: #3ca838;
+    background-color: #7AB730;
     padding: 14px;
     margin-top: auto;
     border-radius: 6%;
-    border-color: #3ca838;
+    border-color: #7AB730;
     width: 200px;
     font-size: 21px;
     text-align: center;
@@ -34,4 +37,9 @@
 .button:hover {
     background-color: #6f5d9c;
     color: white;
+}
+
+.details img {
+    width: 600px;
+    height: 420px;
 }
