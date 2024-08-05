@@ -11,7 +11,7 @@ import Errors from "../errors/Errors";
 
 export default function Login() {
 
-    const { loginSubmitHandler, errorsHandler, clearErrors } = useContext(AuthContext);
+    const { loginSubmitHandler } = useContext(AuthContext);
 
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         email: '',
@@ -22,32 +22,31 @@ export default function Login() {
 
     return (
         <>
-
             <main className={styles.login}>
                 <section className={styles.loginbox}>
                     <div className={styles.loginSection}>
                         <h1>SIGN IN</h1>
                         <form onSubmit={onSubmit}>
-                           
-                                <label>Email</label>
-                                <input className={styles.inputFields} type="email"
-                                    name="email"
-                                    placeholder="Email.."
-                                    onChange={onChange}
-                                    value={values.email}
-                                    required
-                                    onFocus={clearErrors}
-                                />
+
+                            <label>Email</label>
+                            <input className={styles.inputFields} type="email"
+                                name="email"
+                                placeholder="Email.."
+                                onChange={onChange}
+                                value={values.email}
+
+
+                            />
 
 
                             <label>Password</label>
-                            <input  className={styles.inputFields} type="password"
+                            <input className={styles.inputFields} type="password"
                                 name="password"
                                 placeholder="Password.."
                                 onChange={onChange}
                                 value={values.password}
-                                required
-                                onFocus={clearErrors}
+
+
                             />
 
                             <input type="submit" value="Login" />
@@ -58,7 +57,6 @@ export default function Login() {
 
             </main>
 
-            {errorsHandler && <Errors error={errorsHandler} />}
         </>
     )
 }

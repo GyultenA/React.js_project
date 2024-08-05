@@ -1,5 +1,8 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +16,9 @@ const AuthContext = createContext();
 export function AuthContextProvider(props) {
 
   const navigate = useNavigate();
-  const [errorsHandler, setErrors] = useState(null)
+  const [errorsHandler, setErrors] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const [auth, setAuth] = useState(() => {
     localStorage.removeItem('accessToken');
@@ -26,8 +31,10 @@ export function AuthContextProvider(props) {
     try {
       const result = await authService.login(values.email, values.password);
 
-      if (result.email == "" || result.password == "") {
-        setErrors("All fields are riquired!")
+      if (!result.email || !result.password) {
+        setModalMessage("All fields are riquired!");
+        setShowModal(true);
+        return;
       }
 
       //console.log(result);
@@ -35,7 +42,8 @@ export function AuthContextProvider(props) {
       localStorage.setItem('accessToken', result.accessToken);
       navigate(Path.Home);
     } catch (error) {
-      setErrors(error.message);
+      setModalMessage(`Error: ${error.message}`);
+      setShowModal(true);
     }
 
   };
@@ -45,8 +53,16 @@ export function AuthContextProvider(props) {
     try {
 
       if (values.password !== values.repass) {
-        setErrors('Passwords do not match');
-        return
+        setModalMessage('Passwords do not match');
+        setShowModal(true)
+        return;
+      }
+
+
+      if(!values.username || !values.email){
+        setModalMessage('All fields are required');
+        setShowModal(true);
+        return;
       }
 
       const result = await authService.registerNew(values.username, values.email, values.password);
@@ -55,8 +71,8 @@ export function AuthContextProvider(props) {
       navigate(Path.Home);
       setErrors(null)
     } catch (err) {
-      console.log(err.message);
-      setErrors(err.message)
+      setModalMessage(`Error: ${err.message}`);
+      setShowModal(true);
     }
 
   };
@@ -67,16 +83,33 @@ export function AuthContextProvider(props) {
     localStorage.removeItem('accessToken');
   }
 
-  const clearErrors = () => {
-    setErrors(null)
+
+  const ErrorsMessage = ({ message, show}) => {
+      
+    return (
+        <Modal show={show} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Message</Modal.Title>
+        </Modal.Header>
+  
+        <Modal.Body>
+          <p>{message}</p>
+        </Modal.Body>
+  
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  
   }
 
   const values = {
     loginSubmitHandler,
     registerSubmitHandler,
     logoutHandler,
-    errorsHandler,
-    clearErrors,
     userId: auth._id,
     username: auth.username,
     email: auth.email,
@@ -86,6 +119,9 @@ export function AuthContextProvider(props) {
   return (
     <AuthContext.Provider value={values}>
       {props.children}
+      {showModal && (
+        <ErrorsMessage message={modalMessage} show={showModal} />
+      )}
     </AuthContext.Provider>
   )
 }
@@ -93,3 +129,4 @@ export function AuthContextProvider(props) {
 AuthContext.displayName = "AuthContext";
 
 export default AuthContext
+

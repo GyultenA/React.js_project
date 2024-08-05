@@ -1,34 +1,39 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function Errors () {
-  const [show, setShow] = useState(false);
+export default function ErrorsMessage ({ errors, onClose}) {
+  const [showModal, setShow] = useState(true);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    if(onClose){
+      onClose()
+    }
+  }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+   <div className="modal show"
+      style={{ display: 'block', position: 'initial' }}
+    >
+      <Modal.Dialog  onShow={() => setShow(true)} >
+        <Modal.Header closeButton onClick={handleClose}>
+          <Modal.Title>Message</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+
+        <Modal.Body>
+          <p>{errors}</p>
+        </Modal.Body>
+
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
         </Modal.Footer>
-      </Modal>
+      </Modal.Dialog>
+    </div>
     </>
   );
 }
