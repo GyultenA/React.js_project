@@ -13,18 +13,16 @@ export default function TeamDetails () {
 
     const {teamId} = useParams();
 
-    console.log(teamId)
 
     useEffect(() => {
         if (teamId) {
             getTeamById(teamId)
                 .then((data) => {
-                    console.log( data); 
                     setDetails(data);
 
                 })
                 .catch((error) => {
-                    console.error('Error fetching review:', error);
+                    console.error(`Error fetching review:'${error.message}`);
 
 
                 });
@@ -32,7 +30,7 @@ export default function TeamDetails () {
     }, [teamId]);
 
     const onClose = () => {
-        setShowDetails(false)
+        setShowDetails(false);
     }
 
 

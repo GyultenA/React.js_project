@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import AuthContext from '../../context/authContext';
-import styles from "./Profile.module.css"
+import styles from "./Profile.module.css";
 import ProfilePost from './profilePost/ProfilePost';
 import { getUserPosts } from '../../api/reviewsService';
 
@@ -17,15 +17,12 @@ export default function Profile() {
     //console.log(userId)
     const [userReviews, setUserReviews] = useState([]);
     const { reviewId } = useParams();
-    console.log(reviewId)
+  
 
     useEffect(() => {
         getUserPosts(userId)
             .then(result => setUserReviews(result))
-    }, [userId])
-
-    console.log(userReviews)
-   
+    }, [userId]);
 
   
 

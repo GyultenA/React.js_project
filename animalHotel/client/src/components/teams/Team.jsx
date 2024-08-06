@@ -15,9 +15,6 @@ export default function Team() {
       .catch(err => console.log(err))
   }, []);
 
-  console.log(teams.length)
-
-  //{teams.map(team => <TeamList key={team._id} {...team} />)}
 
   return (
 

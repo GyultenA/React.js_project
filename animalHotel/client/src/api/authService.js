@@ -54,7 +54,7 @@ export const getUserDetails = async ()=> {
   const response = await request.get(`${baseUrl}/me`);
   const result = await response.json();
 
-  console.log(result)
+ // console.log(result)
   return (result)
 
 }
